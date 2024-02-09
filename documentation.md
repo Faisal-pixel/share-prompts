@@ -1,3 +1,16 @@
+# File structure
+
+1. ###### app folder
+2. ###### components folder:
+   contains all of the files of component that will be reusable.
+3. ###### models folder:
+   contains models for the mongodb database.
+4. ###### styles folder:
+   contains css styles.
+5. ###### utils folder:
+   contains utility functions.
+6.
+
 # Dependencies Installed
 
 - bcrypt:
@@ -76,12 +89,15 @@ npm ERR! node-pre-gyp ERR! cwd C:\Users\FAISAL ADAMS\OneDrive\Documents\TUTORIAL
 npm ERR! node-pre-gyp ERR! node -v v20.11.0
 npm ERR! node-pre-gyp ERR! node-pre-gyp -v v1.0.11
 npm ERR! node-pre-gyp ERR! not ok
-
 npm ERR! A complete log of this run can be found in: C:\Users\FAISAL ADAMS\AppData\Local\npm-cache_logs\2024-02-08T06_11_25_239Z-debug-0.log
 
 </blockquote>
 
 The way I fixed this was to uninstall node totally, then install nvm. Nvm is a node version manager that I can use to switch between different node versions. Once I did that, I ran the below:
+
+```
 nvm install node
 nvm use `latest version(21.6.1)`
+```
+
 Then I installed bcyrpt again and it worked this time.
