@@ -7,7 +7,7 @@
 
 # Errors faced
 
-1. While installing bcrypt, I got this error:
+### 1. While installing bcrypt, I got this error:
 
 <blockquote>
 npm install bcrypt
@@ -80,3 +80,8 @@ npm ERR! node-pre-gyp ERR! not ok
 npm ERR! A complete log of this run can be found in: C:\Users\FAISAL ADAMS\AppData\Local\npm-cache_logs\2024-02-08T06_11_25_239Z-debug-0.log
 
 </blockquote>
+
+The way I fixed this was to uninstall node totally, then install nvm. Nvm is a node version manager that I can use to switch between different node versions. Once I did that, I ran the below:
+nvm install node
+nvm use `latest version(21.6.1)`
+Then I installed bcyrpt again and it worked this time.
