@@ -1,15 +1,22 @@
 # File structure
 
-1. ###### app folder
-2. ###### components folder:
-   contains all of the files of component that will be reusable.
-3. ###### models folder:
-   contains models for the mongodb database.
-4. ###### styles folder:
-   contains css styles.
-5. ###### utils folder:
-   contains utility functions.
-6.
+###### 1. App folder
+
+###### 2. Components folder:
+
+contains all of the files of component that will be reusable.
+
+###### 3. Models folder:
+
+contains models for the mongodb database.
+
+###### 4. Styles folder:
+
+contains css styles.
+
+###### 5. Utils folder:
+
+contains utility functions. 6.
 
 # Dependencies Installed
 
