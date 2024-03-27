@@ -5,17 +5,20 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
+//NOTES
+//session?.user is a way to check if the session object exists before trying to access the user object. This is a way to prevent errors in case the session object is null or undefined.
+
 const Nav = () => {
-  const isUserLoggedIn = true;
+  const {data: session} = useSession(); // We are using the useSession hook to get the session data
   // We are create a state to store the providers, i.e google auth, facebook auth, etc. But in this project, we will only be using google auth
-  const { providers, setProviders } = useState(null);
+  const [ providers, setProviders ] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   // We are using the useEffect hook to fetch the providers as soon as the component mounts then we store the providers in the state we created.
   useEffect(() => {
     const fetchProviders = async () => {
       const response = await getProviders();
-      // setProviders(response);
+      setProviders(response);
     }
     fetchProviders();
   }, []);
@@ -30,7 +33,7 @@ const Nav = () => {
       <div className='sm:flex hidden'>
         {/* We need to know whether a user is currently logged in or not to know which buttons to show */}
         {
-          isUserLoggedIn ? (
+          session?.user ? (
             <div className='flex gap-3 md:gap-5'>
               <Link href='/create-prompt' className='black_btn'>
                 Create Post
@@ -41,7 +44,7 @@ const Nav = () => {
               </button>
 
               <Link href="/profile">
-                <Image src='/assets/images/logo.svg' alt='User Profile' width={37} height={37} className='rounded-full'/>
+                <Image src={session?.user.image} alt='User Profile' width={37} height={37} className='rounded-full'/>
               </Link>
             </div>
           ) : (
@@ -64,9 +67,9 @@ const Nav = () => {
       {/* Mobile Navigation */}
       <div className='sm:hidden flex relative'>
         {
-          isUserLoggedIn ? (
+          session?.user ? (
             <div className='flex'>
-              <Image src='/assets/images/logo.svg' alt='User Profile' width={37} height={37} className='rounded-full'
+              <Image src={session?.user.image} alt='User Profile' width={37} height={37} className='rounded-full'
                 onClick={() => {setToggleDropdown((prev) => !prev)}} // We are using the setToggleDropdown function to toggle the dropdown. We are using the previous value of the state to toggle the dropdown.
               />
 
