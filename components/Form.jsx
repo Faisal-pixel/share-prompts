@@ -44,10 +44,12 @@ const Form = (props) => {
           <Link href={"/"} className="text-gray-500 text-sm">
             Cancel
           </Link>
-
-          <button type="submit" disabled={submitting} className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"> // Explanation: The submit button is disabled when the form is submitting, and the text on the button changes to indicate the submission status.
+          
+          <button type="submit" disabled={submitting} className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
+          // Explanation: The submit button is disabled when the form is submitting, and the text on the button changes to indicate the submission status.
+          > 
             {submitting ? `${type}...` : type}
-          </button>
+          </button> 
         </div>
       </form>
     </section>
