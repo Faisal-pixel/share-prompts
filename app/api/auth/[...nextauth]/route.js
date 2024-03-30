@@ -12,7 +12,7 @@ const handler = NextAuth({
     ],
     callbacks: {
         async session({ session}) {
-        const sessionUser = await User.findOne({
+        const sessionUser = await User.findOne({ // The findOne method is used to find a single document in the database that satisfies the specified query criteria. The query criteria is the email of the user that is stored in the session object.
             email: session.user.email,
         })
         session.user.id = sessionUser._id.toString();

@@ -23,6 +23,11 @@ const Feed = () => {
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
   }
+
+  const filteredPosts = posts.filter((post) => {
+    return post.prompt.toLowerCase().includes(searchText.toLowerCase()) || post.creator.username.toLowerCase().includes(searchText.toLowerCase()) || post.tag.toLowerCase().includes(searchText.toLowerCase());
+  });
+
   useEffect(() => {
     // Fetch data from the server
     const fetchPosts = async () => {
@@ -48,7 +53,7 @@ const Feed = () => {
       </form>
 
       <PromptCardList
-        data={posts}
+        data={filteredPosts}
         handleTagClick={() => {}}
       />
     </section>
