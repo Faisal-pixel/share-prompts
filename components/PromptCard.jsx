@@ -51,7 +51,7 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
         className="font-inter text-sm blue_gradient cursor-pointer"
         onClick={() => handleTagClick && handleTagClick(post.tag)} //Explanation: The onClick event handler is used to call the handleTagClick function when the user clicks on the tag. The handleTagClick function is passed as a prop to the PromptCard component from the parent component, and it is used to handle the logic for filtering posts by tag.
       > 
-        {post.tag}
+        #{post.tag}
       </p>
 
       {session?.user.id === post.creator._id && pathName === '/profile' &&(
