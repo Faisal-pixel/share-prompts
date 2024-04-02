@@ -9,6 +9,8 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
+  const user_id = post.creator._id;
+  const user_name = post.creator.username;
 
   const [copied, setCopied] = useState("");
 
@@ -17,10 +19,18 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
     navigator.clipboard.writeText(post.prompt); //Explanation: The navigator.clipboard.writeText() method is used to copy the prompt text to the clipboard when the user clicks on the copy button. This method is called with the post.prompt value as an argument to copy the prompt text to the clipboard.
     setTimeout(() => setCopied(""), 3000);
   }
+
+  const handleUserProfileClick = () => {
+    if(pathName === '/profile' || session?.user.id === post.creator._id) {
+      router.push(`/profile`);
+      return;
+    }; //Explanation: The handleUserProfileClick function is defined to handle the logic for redirecting the user to the user profile page when the user clicks on the user profile image. The function checks if the user is already on the profile page and if the user is the creator of the post. If both conditions are met, the function returns early and does not redirect the user to the user profile page. This prevents the user from being redirected to their own profile page when they click on their profile image on the profile page.
+    router.push(`/user-profile?id=${user_id}&username=${user_name}`);
+  }
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={handleUserProfileClick}>
           <Image
             src={post.creator.image}
             alt="user_image"
@@ -39,6 +49,7 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
             src={copied === post.prompt ? "/assets/icons/tick.svg" : "/assets/icons/copy.svg"}
             width={12}
             height={12}
+            alt="copy_icon"
           />
         </div>
 

@@ -29,7 +29,6 @@ const MyProfile = () => {
         }
       }
     }; // Explanation: The handleDelete function is defined as an empty async function. This function will be used to handle the logic for deleting a post when the user clicks on the delete button.
-
     //For the data we only want to fetch posts that belong to the user.
     useEffect(() => {
         // Fetch data from the server
